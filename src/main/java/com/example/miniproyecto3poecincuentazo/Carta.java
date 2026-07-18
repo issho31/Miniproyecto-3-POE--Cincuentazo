@@ -3,6 +3,10 @@ package com.example.miniproyecto3poecincuentazo;
 import java.util.Objects;
 
 /**
+ * /**
+ * @author Juan Diego Quiñones
+ * @author Jeferson Gomez Gomez
+ * @version 1.0
  * Representa una carta de la baraja, definida por su {@link Palo} y su {@link Valor}.
  * Es inmutable: una vez creada, ni el palo ni el valor pueden cambiar.
  */
@@ -11,15 +15,27 @@ public class Carta {
     private final Palo palo;
     private final Valor valor;
 
+
+    /**
+     * @param palo  el palo de la carta, no puede ser nulo
+     * @param valor el valor de la carta, no puede ser nulo
+     * @throws NullPointerException si {@code palo} o {@code valor} son nulos
+     */
     public Carta(Palo palo, Valor valor) {
         this.palo = Objects.requireNonNull(palo, "El palo no puede ser nulo");
         this.valor = Objects.requireNonNull(valor, "El valor no puede ser nulo");
     }
 
+    /**
+     * @return el palo de esta carta
+     */
     public Palo getPalo() {
         return palo;
     }
 
+    /**
+     * @return el valor de esta carta
+     */
     public Valor getValor() {
         return valor;
     }
@@ -86,6 +102,9 @@ public class Carta {
         return Objects.hash(palo, valor);
     }
 
+    /**
+     * @return una representación corta de la carta, p. ej. {@code "A♥"} o {@code "K♠"}.
+     */
     @Override
     public String toString() {
         return valor.getEtiqueta() + palo.getSimbolo();

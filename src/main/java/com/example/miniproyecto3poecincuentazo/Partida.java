@@ -5,6 +5,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author Juan Diego Quiñones
+ * @author Jeferson Gomez Gomez
+ * @version 1.0
+ */
 public class Partida {
 
 
@@ -22,6 +27,12 @@ public class Partida {
     private boolean terminada;
 
 
+    /**
+     * @param nombreHumano     nombre del jugador humano
+     * @param cantidadMaquinas cantidad de jugadores máquina: 1, 2 o 3 (HU-1)
+     * @throws NumeroJugadoresInvalidoException si {@code cantidadMaquinas} no está en [1, 3]
+     * @throws NullPointerException si {@code nombreHumano} es nulo
+     */
     public Partida(String nombreHumano, int cantidadMaquinas) {
         Objects.requireNonNull(nombreHumano, "El nombre del jugador humano no puede ser nulo");
         if (cantidadMaquinas < MIN_MAQUINAS || cantidadMaquinas > MAX_MAQUINAS) {
@@ -54,31 +65,55 @@ public class Partida {
         indiceTurno = 0;
     }
 
+    /**
+     * @return el jugador al que le corresponde jugar en este momento.
+     */
     public Jugador getJugadorActual() {
         return jugadores.get(indiceTurno);
     }
 
+    /**
+     * @return la suma vigente en la mesa (siempre &le; {@link #SUMA_MAXIMA}).
+     */
     public int getSumaMesa() {
         return sumaMesa;
     }
 
+    /**
+     * @return una vista de solo lectura de las cartas jugadas en la mesa,
+     *         en orden de aparición (la última es la visible/actual).
+     */
     public List<Carta> getMesa() {
         return Collections.unmodifiableList(mesa);
     }
 
+    /**
+     * @return una vista de solo lectura de todos los jugadores de la
+     *         partida (el humano siempre en la posición 0).
+     */
     public List<Jugador> getJugadores() {
         return Collections.unmodifiableList(jugadores);
     }
 
+    /**
+     * @return {@code true} si la partida ya terminó (solo queda un jugador activo).
+     */
     public boolean isTerminada() {
         return terminada;
     }
 
+    /**
+     * @return la cantidad de cartas que quedan disponibles en el mazo.
+     */
     public int getCartasEnMazo() {
         return mazo.cartasDisponibles();
     }
 
 
+    /**
+     * @return el jugador ganador una vez terminada la partida, o
+     *         {@code null} si todavía está en curso.
+     */
     public Jugador getGanador() {
         if (!terminada) {
             return null;
@@ -87,6 +122,10 @@ public class Partida {
     }
 
 
+    /**
+     *
+     * @return {@code true} si el jugador actual fue eliminado en esta llamada
+     */
     public boolean verificarYEliminarSiNoPuedeJugar() {
         Jugador actual = getJugadorActual();
         if (actual.tieneJugadaValida(sumaMesa)) {
@@ -96,6 +135,16 @@ public class Partida {
         return true;
     }
 
+    /**
+     * @param carta          carta de la mano del jugador actual que se desea jugar
+     * @param valorPreferido para el As: 1 o 10, según lo que convenga al
+     *                       jugador. Se puede pasar {@code null} para que se
+     *                       elija automáticamente el mejor valor válido.
+     * @throws CartaInvalidaException si la carta no está en la mano del
+     *         jugador actual, si el valor preferido indicado no es válido
+     *         con la suma actual, o si ninguno de los valores posibles de
+     *         la carta respeta la regla principal (suma &le; 50)
+     */
     public void jugarCartaJugadorActual(Carta carta, Integer valorPreferido) {
         Jugador actual = getJugadorActual();
         if (!actual.getMano().contains(carta)) {
@@ -162,6 +211,11 @@ public class Partida {
         } while (jugadores.get(indiceTurno).isEliminado() && intentos <= total);
     }
 
+    /**
+     * @throws IllegalStateException en el caso extremo (no alcanzable en
+     *         una partida normal) de que no haya cartas ni en el mazo ni
+     *         en la mesa para reciclar
+     */
     private Carta tomarCartaConReciclaje() {
         try {
             return mazo.tomarCarta();

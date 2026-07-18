@@ -16,6 +16,11 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * @author Juan Diego Quiñones
+ * @author Jeferson Gomez Gomez
+ * @version 1.0
+ */
 public class JuegoController {
 
     private static final int ESPERA_MAQUINA_MIN_MS = 2000;
@@ -38,6 +43,11 @@ public class JuegoController {
     private volatile boolean juegoActivo = false;
     private Thread hiloCronometro;
 
+    /**
+     *
+     * @param partidaIniciada la partida ya preparada (con {@link Partida#iniciar()} ya invocado)
+     * @throws NullPointerException si {@code partidaIniciada} es nula
+     */
     public void iniciarPartida(Partida partidaIniciada) {
         this.partida = Objects.requireNonNull(partidaIniciada, "La partida no puede ser nula");
         construirEtiquetasMaquinas();
@@ -125,6 +135,10 @@ public class JuegoController {
         procesarTurno();
     }
 
+    /**
+     *
+     * @param carta la carta que el jugador humano hizo clic para jugar
+     */
     private void manejarClickCartaHumano(Carta carta) {
         if (partida.isTerminada() || partida.getJugadorActual().esMaquina()) {
             return;
@@ -148,6 +162,11 @@ public class JuegoController {
         procesarTurno();
     }
 
+    /**
+     *
+     * @param carta la carta que el humano va a jugar
+     * @return el valor elegido, o {@code null} si no aplica o no hay ninguna opción válida
+     */
     private Integer resolverValorHumano(Carta carta) {
         if (!carta.getValor().tieneValorAmbiguo()) {
             return null;
@@ -168,6 +187,11 @@ public class JuegoController {
         return preguntarValorAs();
     }
 
+    /**
+     *
+     * @return 1 o 10, según el botón que el jugador haya elegido (1 por
+     *         defecto si cierra el diálogo sin elegir)
+     */
     private Integer preguntarValorAs() {
         Alert dialogo = new Alert(Alert.AlertType.CONFIRMATION);
         dialogo.setTitle("As");

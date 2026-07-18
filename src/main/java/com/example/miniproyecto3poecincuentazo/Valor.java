@@ -1,5 +1,10 @@
 package com.example.miniproyecto3poecincuentazo;
 
+/**
+ * @author Juan Diego Quiñones
+ * @author Jeferson Gomez Gomez
+ * @version 1.0
+ */
 public enum Valor {
     AS("A", new int[]{1, 10}),
     DOS("2", new int[]{2}),
@@ -23,14 +28,27 @@ public enum Valor {
         this.valoresPosibles = valoresPosibles;
     }
 
+    /**
+     * @return el texto corto que identifica al valor (p. ej. {@code "A"}, {@code "10"}, {@code "K"}).
+     */
     public String getEtiqueta() {
         return etiqueta;
     }
 
+    /**
+     * @return una copia del arreglo de puntos que esta carta puede aportar
+     *         a la suma de la mesa (más de un elemento solo en el caso del As).
+     *         Se devuelve una copia para que el arreglo interno del enum
+     *         permanezca inmutable.
+     */
     public int[] getValoresPosibles() {
         return valoresPosibles.clone();
     }
 
+    /**
+     * @return {@code true} si la carta tiene más de un valor posible
+     *         (únicamente el As); {@code false} para el resto de valores.
+     */
     public boolean tieneValorAmbiguo() {
         return valoresPosibles.length > 1;
     }

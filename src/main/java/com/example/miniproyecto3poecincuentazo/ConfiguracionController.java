@@ -7,6 +7,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
+/**
+ * @author Juan Diego Quiñones
+ * @author Jeferson Gomez Gomez
+ * @version 1.0
+ */
 public class ConfiguracionController {
 
     private static final String VISTA_JUEGO = "/com/example/miniproyecto3poecincuentazo/juego.fxml";
@@ -42,6 +47,9 @@ public class ConfiguracionController {
         }
     }
 
+    /**
+     * @return 1, 2 o 3 según el radio button seleccionado en {@code grupoCantidadMaquinas}
+     */
     private int obtenerCantidadMaquinasSeleccionada() {
         Toggle seleccionado = grupoCantidadMaquinas.getSelectedToggle();
         if (seleccionado == radioDosMaquinas) {
@@ -53,6 +61,10 @@ public class ConfiguracionController {
         return 1;
     }
 
+    /**
+     * @return el nombre escrito por el usuario, recortado, o
+     *         NOMBRE_POR_DEFECTO si el campo quedó vacío
+     */
     private String obtenerNombreJugador() {
         String nombre = campoNombreJugador.getText();
         if (nombre == null || nombre.isBlank()) {
