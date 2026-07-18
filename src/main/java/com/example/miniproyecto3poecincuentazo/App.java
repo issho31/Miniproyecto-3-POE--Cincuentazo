@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-    private static final String VISTA_CONFIGURACION = "/com/cincuentazo/view/configuracion.fxml";
+    private static final String VISTA_CONFIGURACION = "/com/example/miniproyecto3poecincuentazo/configuracion.fxml";
 
     @Override
     public void start(Stage stagePrincipal) {

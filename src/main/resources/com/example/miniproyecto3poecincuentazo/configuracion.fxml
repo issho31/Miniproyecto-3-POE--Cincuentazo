@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="520.0" prefWidth="680.0" styleClass="vista-configuracion"
+      stylesheets="@estilos.css"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.miniproyecto3poecincuentazo.ConfiguracionController">
+
+    <fx:define>
+        <ToggleGroup fx:id="grupoCantidadMaquinas"/>
+    </fx:define>
+
+    <VBox alignment="CENTER" spacing="22.0" maxWidth="420.0" styleClass="tarjeta-configuracion">
+        <padding>
+            <Insets top="36.0" right="40.0" bottom="32.0" left="40.0"/>
+        </padding>
+
+        <Label text="Cincuentazo" styleClass="titulo"/>
+        <Label text="Configura tu partida antes de empezar" styleClass="subtitulo" wrapText="true"/>
+
+        <VBox spacing="8.0" alignment="CENTER_LEFT">
+            <Label text="Tu nombre (opcional)" styleClass="etiqueta-campo"/>
+            <TextField fx:id="campoNombreJugador" promptText="Jugador" styleClass="campo-texto"/>
+        </VBox>
+
+        <VBox spacing="10.0" alignment="CENTER_LEFT">
+            <Label text="¿Contra cuántas máquinas quieres jugar?" styleClass="etiqueta-campo"/>
+            <HBox spacing="20.0" alignment="CENTER_LEFT">
+                <RadioButton fx:id="radioUnaMaquina" text="1 máquina" toggleGroup="$grupoCantidadMaquinas" styleClass="opcion-maquina"/>
+                <RadioButton fx:id="radioDosMaquinas" text="2 máquinas" toggleGroup="$grupoCantidadMaquinas" styleClass="opcion-maquina"/>
+                <RadioButton fx:id="radioTresMaquinas" text="3 máquinas" toggleGroup="$grupoCantidadMaquinas" styleClass="opcion-maquina"/>
+            </HBox>
+        </VBox>
+
+        <Label fx:id="etiquetaError" styleClass="etiqueta-error" wrapText="true" maxWidth="320.0"/>
+
+        <Button text="Iniciar juego" styleClass="boton-primario" onAction="#manejarIniciarJuego" maxWidth="1.7976931348623157E308"/>
+    </VBox>
+</VBox>

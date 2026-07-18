@@ -9,7 +9,7 @@ import javafx.scene.control.ToggleGroup;
 
 public class ConfiguracionController {
 
-    private static final String VISTA_JUEGO = "/com/cincuentazo/view/juego.fxml";
+    private static final String VISTA_JUEGO = "/com/example/miniproyecto3poecincuentazo/juego.fxml";
     private static final String NOMBRE_POR_DEFECTO = "Jugador";
 
     @FXML private TextField campoNombreJugador;

@@ -1,0 +1,70 @@
+
+.vista-configuracion {
+    -fx-background-color: linear-gradient(to bottom right, #0b3d2e, #175c45);
+}
+
+.tarjeta-configuracion {
+    -fx-background-color: #faf6ec;
+    -fx-background-radius: 18;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 24, 0.15, 0, 8);
+}
+
+.titulo {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #14301f;
+}
+
+.subtitulo {
+    -fx-font-size: 13px;
+    -fx-text-fill: #5a6b60;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+}
+
+.etiqueta-campo {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #33443a;
+}
+
+.campo-texto {
+    -fx-background-radius: 8;
+    -fx-padding: 8 10 8 10;
+    -fx-font-size: 13px;
+    -fx-border-color: #c8d3cb;
+    -fx-border-radius: 8;
+}
+
+.campo-texto:focused {
+    -fx-border-color: #c9a227;
+}
+
+.opcion-maquina {
+    -fx-font-size: 13px;
+    -fx-text-fill: #33443a;
+}
+
+.etiqueta-error {
+    -fx-text-fill: #b3261e;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.boton-primario {
+    -fx-background-color: #c9a227;
+    -fx-text-fill: #1c2b21;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+}
+
+.boton-primario:hover {
+    -fx-background-color: #dbb437;
+}
+
+.boton-primario:pressed {
+    -fx-background-color: #b28f1f;
+}
