@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="640.0" prefWidth="900.0" styleClass="vista-juego"
+            stylesheets="@estilos.css"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.miniproyecto3poecincuentazo.JuegoController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="24.0" styleClass="barra-superior">
+            <padding>
+                <Insets top="14.0" right="24.0" bottom="14.0" left="24.0"/>
+            </padding>
+            <Label fx:id="labelTurno" text="Turno de: -" styleClass="dato-superior, dato-turno"/>
+            <Label fx:id="labelSumaMesa" text="Suma en mesa: 0 / 50" styleClass="dato-superior"/>
+            <Label fx:id="labelCartasMazo" text="Cartas en el mazo: 0" styleClass="dato-superior"/>
+            <Label fx:id="labelTiempo" text="Tiempo de turno: 0s" styleClass="dato-superior"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="botonSalir" text="Salir" styleClass="boton-secundario" onAction="#manejarSalir"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox spacing="12.0" styleClass="panel-maquinas" prefWidth="220.0">
+            <padding>
+                <Insets top="20.0" right="16.0" bottom="20.0" left="16.0"/>
+            </padding>
+            <Label text="Máquinas" styleClass="titulo-seccion"/>
+            <VBox fx:id="vboxMaquinas" spacing="10.0"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox alignment="CENTER" spacing="16.0" styleClass="panel-mesa">
+            <Label text="Mesa" styleClass="titulo-seccion"/>
+            <HBox fx:id="hboxCartaMesa" alignment="CENTER" spacing="10.0" styleClass="hbox-carta-mesa"/>
+        </VBox>
+    </center>
+
+    <bottom>
+        <VBox spacing="10.0" styleClass="panel-mano">
+            <padding>
+                <Insets top="14.0" right="24.0" bottom="20.0" left="24.0"/>
+            </padding>
+            <Label text="Tu mano" styleClass="titulo-seccion"/>
+            <ScrollPane fitToHeight="true" hbarPolicy="AS_NEEDED" vbarPolicy="NEVER" styleClass="scroll-mano">
+                <HBox fx:id="hboxManoHumano" alignment="CENTER_LEFT" spacing="12.0" styleClass="hbox-mano-humano"/>
+            </ScrollPane>
+        </VBox>
+    </bottom>
+
+</BorderPane>
