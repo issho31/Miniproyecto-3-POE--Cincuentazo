@@ -1,7 +1,5 @@
 package com.example.miniproyecto3poecincuentazo;
 
-import com.cincuentazo.model.NumeroJugadoresInvalidoException;
-import com.cincuentazo.model.Partida;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;

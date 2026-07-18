@@ -1,6 +1,5 @@
 package com.example.miniproyecto3poecincuentazo;
 
-import com.cincuentazo.controller.SceneNavigator;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
